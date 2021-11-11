@@ -16,6 +16,9 @@ public class TypewriterEffect : MonoBehaviour
     //private method that "typewriter-s" the given text to the given textLabel
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
+        textLabel.text = string.Empty; // make sure the text label is clear before we start
+        yield return new WaitForSeconds(2); //pause before starting the coroutine so the user can clearly see the effect from the beginning
+
         float t = 0;
         int charIndex = 0;
 

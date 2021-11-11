@@ -3,11 +3,11 @@ using TMPro;
 
 public class DialogUI : MonoBehaviour
 {
-    [SerializeField] private TMP_Text textLabel;
+    [SerializeField] private TMP_Text textLabel; // a pointer to a text label that will be specified within the Unity editor
 
     private void Start()
     {
-        textLabel.text = "Hello!\nThis is my second line";
+        GetComponent<TypewriterEffect>().Run("This is a bit of text\nHello!", textLabel);
     }
 }
 

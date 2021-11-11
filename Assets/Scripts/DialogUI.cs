@@ -7,7 +7,7 @@ public class DialogUI : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<TypewriterEffect>().Run("This is a bit of text\nHello!", textLabel);
+        GetComponent<TypewriterEffect>().Run("This is a bit of text.\nHello!", textLabel);
     }
 }
 

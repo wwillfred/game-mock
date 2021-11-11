@@ -8,16 +8,16 @@ public class TypewriterEffect : MonoBehaviour
     [SerializeField] private float typewriterSpeed = 50f; //variable for controlling the speed of the typewriter effect, to be set inside Unity. The typewriter will type this many characters per second
 
     // public method for specifying a textLabel object and the String to type to it
-    public void Run(string textToType, TMP_Text textLabel)
+    public Coroutine Run(string textToType, TMP_Text textLabel)
     {
-        StartCoroutine(TypeText(textToType, textLabel));
+        return StartCoroutine(TypeText(textToType, textLabel));
     }
 
     //private method that "typewriter-s" the given text to the given textLabel
     private IEnumerator TypeText(string textToType, TMP_Text textLabel)
     {
         textLabel.text = string.Empty; // make sure the text label is clear before we start
-        yield return new WaitForSeconds(2); //pause before starting the coroutine so the user can clearly see the effect from the beginning
+        //yield return new WaitForSeconds(2); //pause before starting the coroutine so the user can clearly see the effect from the beginning
 
         float t = 0;
         int charIndex = 0;

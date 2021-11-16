@@ -18,6 +18,11 @@ public class ResponseHandler : MonoBehaviour
             responseButton.gameObject.SetActive(true);
             responseButton.GetComponent<TMP_Text>().text = response.ResponseText;
             responseButton.GetComponent<Button>().onClick.AddListener(() => OnPickedResponse(response));
+
+            responseBoxHeight += responseButtonTemplate.sizeDelta.y;
+
+            responseBox.sizeDelta = new Vector2(responseBox.sizeDelta.x, responseBoxHeight);
+            responseBox.gameObject.SetActive(true);
         }
     }
 

@@ -9,5 +9,7 @@ public class DialogObject : ScriptableObject
 
     public string[] Dialog => dialog; //we don't want anything external to be able to write to the dialog array, only to read from it
 
+    public bool HasResponses => Responses != null && Responses.Length > 0; //it's conceivable that we might accidentally create a Responses array with nothing in it, that's why we're checking for length
+
     public Response[] Responses => responses; //get method for Response array
 }

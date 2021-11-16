@@ -8,12 +8,14 @@ public class DialogUI : MonoBehaviour
     [SerializeField] private TMP_Text textLabel; // pointer to a text label that will be specified within the Unity editor. we will pass this label to the typewriterEffect so it knows where to write to
     [SerializeField] private DialogObject testDialog;
 
+    private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect; // pointer to the class that produces the typewriter effect 
 
     //called before first frame
     private void Start()
     {
         typewriterEffect = GetComponent<TypewriterEffect>(); // set the pointer to the actual class
+        responseHandler = GetComponent<ResponseHandler>();
         CloseDialogBox(); // make sure the dialog box is not showing at beginning of game
         ShowDialog(testDialog); // sends the testDialog be typewritered
     }
@@ -28,13 +30,24 @@ public class DialogUI : MonoBehaviour
     // private method for typewritering the dialog
     private IEnumerator StepThroughDialog(DialogObject dialogObject)
     {
-        foreach (string dialog in dialogObject.Dialog) //do the following for every string in the dialogObject that was just passed to us
+        for (int i = 0; i < dialogObject.Dialog.Length; i++)
         {
+            string dialog = dialogObject.Dialog[i];
             yield return typewriterEffect.Run(dialog, textLabel); // tell the typewriterEffect to do its thing with this string with the text label that we specified in Unity editor
+
+            if (i == dialogObject.Dialog.Length - 1 && dialogObject.HasResponses) break;
+
             yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
         }
 
-        CloseDialogBox();
+        if (dialogObject.HasResponses)
+        {
+            responseHandler.ShowResponses(dialogObject.Responses);
+        }
+        else
+        {
+            CloseDialogBox();
+        }
     }
 
     // private method for closing the dialog box

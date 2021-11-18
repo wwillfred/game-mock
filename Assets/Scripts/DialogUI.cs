@@ -14,8 +14,8 @@ public class DialogUI : MonoBehaviour
     //called before first frame
     private void Start()
     {
-        typewriterEffect = GetComponent<TypewriterEffect>(); // set the pointer to the actual class
-        responseHandler = GetComponent<ResponseHandler>();
+        typewriterEffect = GetComponent<TypewriterEffect>(); // set the pointer to the TypewriterEffect object
+        responseHandler = GetComponent<ResponseHandler>(); // point to the ResponseHandler object
         CloseDialogBox(); // make sure the dialog box is not showing at beginning of game
         ShowDialog(testDialog); // sends the testDialog be typewritered
     }

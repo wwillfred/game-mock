@@ -5,17 +5,17 @@ using UnityEngine.UI;
 
 public class ResponseHandler : MonoBehaviour
 {
-    [SerializeField] private RectTransform responseBox;
-    [SerializeField] private RectTransform responseButtonTemplate;
-    [SerializeField] private RectTransform responseContainer;
+    [SerializeField] private RectTransform responseBox; //the object that contains the response background and the responses
+    [SerializeField] private RectTransform responseButtonTemplate; //the pointer to the button template we set up in the editor
+    [SerializeField] private RectTransform responseContainer; //the container for however many responses there will be
 
-    private DialogUI dialogUI;
+    private DialogUI dialogUI; //the manager for all dialog functionality
 
-    private List<GameObject> tempResponseButtons = new List<GameObject>();
+    private List<GameObject> tempResponseButtons = new List<GameObject>(); //list that will contain each response button we need to instantiate for our dialog
 
     private void Start()
     {
-        dialogUI = GetComponent<DialogUI>();
+        dialogUI = GetComponent<DialogUI>(); //both the ResponseHandler and the DailogUI scripts are attached to the same object in Unity, so they can "GetComponent" each other
     }
 
     public void ShowResponses(Response[] responses)

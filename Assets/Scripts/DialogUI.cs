@@ -30,16 +30,17 @@ public class DialogUI : MonoBehaviour
     // private method for typewritering the dialog
     private IEnumerator StepThroughDialog(DialogObject dialogObject)
     {
-        for (int i = 0; i < dialogObject.Dialog.Length; i++)
+        for (int i = 0; i < dialogObject.Dialog.Length; i++) //for every String in the array...
         {
-            string dialog = dialogObject.Dialog[i];
+            string dialog = dialogObject.Dialog[i]; //create a reference to the i'th String
             yield return typewriterEffect.Run(dialog, textLabel); // tell the typewriterEffect to do its thing with this string with the text label that we specified in Unity editor
 
-            if (i == dialogObject.Dialog.Length - 1 && dialogObject.HasResponses) break;
+            if (i == dialogObject.Dialog.Length - 1 && dialogObject.HasResponses) break; //if we've iterated to the end of the String array and we have responses to offer the player, we should not wait for input to close the dialog box
 
-            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space));
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.Space)); //otherwise, after the typewriter effect has finished the string, wait for input before starting the next one
         }
 
+        //if the dialog object has responses, show them; otherwise, close the dialog box
         if (dialogObject.HasResponses)
         {
             responseHandler.ShowResponses(dialogObject.Responses);

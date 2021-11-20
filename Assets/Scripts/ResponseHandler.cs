@@ -16,6 +16,8 @@ public class ResponseHandler : MonoBehaviour
     private void Start()
     {
         dialogUI = GetComponent<DialogUI>(); //both the ResponseHandler and the DailogUI scripts are attached to the same object in Unity, so they can "GetComponent" each other
+        responseBox.gameObject.SetActive(false);
+        responseButtonTemplate.gameObject.SetActive(false);
     }
 
     public void ShowResponses(Response[] responses)

@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private DialogUI dialogUI; //not sure why this is here
+    [SerializeField] private DialogUI dialogUI; //we need to be able to call the Canvas' dialogUI IsOpen() method so we can disable input if so
 
     Rigidbody2D body;
 
-    float horizontal; //calling these variables outside the methods below so we can keep track of them between the Update() and FixedUpdate() methods
+    float horizontal; //calling these variables outside the methods so we can keep track of them between the Update() and FixedUpdate() methods
     float vertical;
 
     public float runSpeed = 20.0f;
 
-    public DialogUI DialogUI => dialogUI; //if another class needs to get its hands on the dialogUI
+    public DialogUI DialogUI => dialogUI; //so the DialogActivator class of some other gameObject can call the DialogObject.ShowDialog() method
 
-    public IInteractable Interactable { get; set; } //not sure what this does
+    public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
     // Start is called before the first frame update
     private void Start()
@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (dialogUI.IsOpen) return; //if there's dialog going on, no need to pick up on other player input!
+
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
@@ -38,10 +39,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        Debug.Log(vertical);
-        Debug.Log(horizontal);
+        //Debug.Log(vertical);
+        //Debug.Log(horizontal);
     }
 
+    //called before each update of the physics engine
     private void FixedUpdate()
     {
         Vector2 position = body.position;

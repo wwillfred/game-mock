@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ResponseHandler : MonoBehaviour
 {
     [SerializeField] private RectTransform responseBox; //the object that contains the response background and the responses
-    [SerializeField] private RectTransform responseButtonTemplate; //the pointer to the button template we set up in the editor
+    [SerializeField] private RectTransform responseButtonTemplate; //we will disable this object upon start(), but we will also Instantiate one or more of these when the ShowResponses() method is called
     [SerializeField] private RectTransform responseContainer; //the container for however many responses there will be
 
     private DialogUI dialogUI; //the manager for all dialog functionality
@@ -17,7 +17,7 @@ public class ResponseHandler : MonoBehaviour
     {
         dialogUI = GetComponent<DialogUI>(); //both the ResponseHandler and the DailogUI scripts are attached to the same object in Unity, so they can "GetComponent" each other
         responseBox.gameObject.SetActive(false);
-        responseButtonTemplate.gameObject.SetActive(false);
+        responseButtonTemplate.gameObject.SetActive(false); //we need this template so we can clone it, but we don't want the template visible to player
     }
 
     public void ShowResponses(Response[] responses)

@@ -6,7 +6,6 @@ public class DialogUI : MonoBehaviour
 {
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private TMP_Text textLabel; // pointer to a text label that will be specified within the Unity editor. we will pass this label to the typewriterEffect so it knows where to write to
-    [SerializeField] private DialogObject testDialog;
 
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect; // pointer to the class that produces the typewriter effect 
@@ -17,7 +16,6 @@ public class DialogUI : MonoBehaviour
         typewriterEffect = GetComponent<TypewriterEffect>(); // set the pointer to the TypewriterEffect object
         responseHandler = GetComponent<ResponseHandler>(); // point to the ResponseHandler object
         CloseDialogBox(); // make sure the dialog box is not showing at beginning of game
-        ShowDialog(testDialog); // sends the testDialog be typewritered
     }
 
     //public method for specifying a dialogObject (with a String array) and for "typewritering" the strings

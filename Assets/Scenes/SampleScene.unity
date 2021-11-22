@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogUI: {fileID: 1345760417}
-  runSpeed: 3
+  runSpeed: 4
 --- !u!61 &1475290418
 BoxCollider2D:
   m_ObjectHideFlags: 0

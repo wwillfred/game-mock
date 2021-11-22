@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     public DialogUI DialogUI => dialogUI; //if another class needs to get its hands on the dialogUI
 
-    public IInteractable Interactable { get; set; }
+    public IInteractable Interactable { get; set; } //not sure what this does
 
     // Start is called before the first frame update
     private void Start()
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (dialogUI.IsOpen) return; //if there's dialog going on, no need to pick up on other player input!
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 

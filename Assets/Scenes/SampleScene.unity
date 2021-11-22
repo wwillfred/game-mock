@@ -553,6 +553,8 @@ GameObject:
   - component: {fileID: 818195024}
   - component: {fileID: 818195023}
   - component: {fileID: 818195025}
+  - component: {fileID: 818195026}
+  - component: {fileID: 818195027}
   m_Layer: 0
   m_Name: Temp_partner
   m_TagString: Untagged
@@ -646,6 +648,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &818195026
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818195022}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.8, y: 1.8}
+  m_EdgeRadius: 0
+--- !u!114 &818195027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818195022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1351dd90d6656460d81e995db814668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogObject: {fileID: 11400000, guid: 2b1e7a0508abd41a8a3622a2716ab9ca, type: 2}
 --- !u!1 &1237606108
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +840,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 1684707442}
   textLabel: {fileID: 542626813}
-  testDialog: {fileID: 11400000, guid: 2b1e7a0508abd41a8a3622a2716ab9ca, type: 2}
 --- !u!114 &1345760418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -840,9 +880,10 @@ GameObject:
   - component: {fileID: 1475290414}
   - component: {fileID: 1475290416}
   - component: {fileID: 1475290417}
+  - component: {fileID: 1475290418}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -945,7 +986,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c45a0f3df1cc47e89931526540566a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogUI: {fileID: 1345760417}
   runSpeed: 3
+--- !u!61 &1475290418
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475290413}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &1507454732
 GameObject:
   m_ObjectHideFlags: 0

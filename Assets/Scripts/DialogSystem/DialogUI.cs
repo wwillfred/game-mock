@@ -7,6 +7,8 @@ public class DialogUI : MonoBehaviour
     [SerializeField] private GameObject dialogBox;
     [SerializeField] private TMP_Text textLabel; // pointer to a text label that will be specified within the Unity editor. we will pass this label to the typewriterEffect so it knows where to write to
 
+    public bool IsOpen { get; private set;} //outsiders can only check whether dialog is open
+
     private ResponseHandler responseHandler;
     private TypewriterEffect typewriterEffect; // pointer to the class that produces the typewriter effect 
 
@@ -21,6 +23,7 @@ public class DialogUI : MonoBehaviour
     //public method for specifying a dialogObject (with a String array) and for "typewritering" the strings
     public void ShowDialog(DialogObject dialogObject)
     {
+        IsOpen = true; //dialog is open!
         dialogBox.SetActive(true); // make the dialog box appear!
         StartCoroutine(StepThroughDialog(dialogObject)); // calls the private method for typewritering the dialog
     }
@@ -52,6 +55,7 @@ public class DialogUI : MonoBehaviour
     // private method for closing the dialog box
     private void CloseDialogBox()
     {
+        IsOpen = false; //dialog is not open!
         dialogBox.SetActive(false); // make dialog box invisible to user
         textLabel.text = string.Empty; // make sure there's no residual text hidden in the box
     }

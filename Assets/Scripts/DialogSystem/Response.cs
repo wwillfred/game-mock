@@ -8,7 +8,7 @@ public class Response
     [SerializeField] private string responseText; //the text this object was made to store
     [SerializeField] private DialogObject dialogObject; //the dialog to be shown if the user selects this Response
 
-    public string ResponseText => responseText; //get method
+    public string ResponseText => responseText;
 
-    public DialogObject DialogObject => dialogObject; //get method
+    public DialogObject DialogObject => dialogObject;
 }

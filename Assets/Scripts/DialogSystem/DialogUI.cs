@@ -4,8 +4,9 @@ using TMPro;
 
 public class DialogUI : MonoBehaviour
 {
-    [SerializeField] private GameObject dialogBox;
-    [SerializeField] private TMP_Text textLabel; // pointer to a text label that will be specified within the Unity editor. we will pass this label to the typewriterEffect so it knows where to write to
+    //we'll set these in the Unity editor
+    [SerializeField] private GameObject dialogBox; //we need to be able to activate and deactivate this
+    [SerializeField] private TMP_Text textLabel; //we will pass this label to the typewriterEffect so it knows where to write to
 
     public bool IsOpen { get; private set;} //outsiders can only check whether dialog is open
 
@@ -28,10 +29,10 @@ public class DialogUI : MonoBehaviour
         StartCoroutine(StepThroughDialog(dialogObject)); // calls the private method for typewritering the dialog
     }
 
-    // private method for typewritering the dialog
+    //DialogUI calls this as a coroutine in the ShowDialog() method
     private IEnumerator StepThroughDialog(DialogObject dialogObject)
     {
-        for (int i = 0; i < dialogObject.Dialog.Length; i++) //for every String in the array...
+        for (int i = 0; i < dialogObject.Dialog.Length; i++)
         {
             string dialog = dialogObject.Dialog[i]; //create a reference to the i'th String
             yield return typewriterEffect.Run(dialog, textLabel); // tell the typewriterEffect to do its thing with this string with the text label that we specified in Unity editor

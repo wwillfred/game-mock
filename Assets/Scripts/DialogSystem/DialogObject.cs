@@ -9,7 +9,7 @@ public class DialogObject : ScriptableObject
 
     public string[] Dialog => dialog; //get the Dialog array
 
-    public bool HasResponses => Responses != null && Responses.Length > 0; //it's conceivable that we might accidentally create a Responses array with nothing in it, that's why we're checking for length
+    public bool HasResponses => Responses != null && Responses.Length > 0; //DialogUI needs to check whether this DialogObject has responses so it can pass the responses[] array to the ResponseHandler. it's conceivable that we might accidentally create a Responses array with nothing in it, that's why we're checking for length
 
     public Response[] Responses => responses; //get method for Response array
 }

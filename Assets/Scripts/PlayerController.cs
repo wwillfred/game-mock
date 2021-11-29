@@ -8,8 +8,9 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D body;
 
-    float horizontal; //calling these variables outside the methods so we can keep track of them between the Update() and FixedUpdate() methods
-    float vertical;
+    Vector2 movement;
+    //float horizontal; //calling these variables outside the methods so we can keep track of them between the Update() and FixedUpdate() methods
+    //float vertical;
 
     public float runSpeed = 20.0f;
 
@@ -28,8 +29,10 @@ public class PlayerController : MonoBehaviour
     {
         if (dialogUI.IsOpen) return; //if there's dialog going on, no need to pick up on other player input!
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        //horizontal = Input.GetAxisRaw("Horizontal");
+        //vertical = Input.GetAxisRaw("Vertical");
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -46,11 +49,13 @@ public class PlayerController : MonoBehaviour
     //called before each update of the physics engine
     private void FixedUpdate()
     {
-        Vector2 position = body.position;
-        position.x = position.x + runSpeed * horizontal * Time.deltaTime;
-        position.y = position.y + runSpeed * vertical * Time.deltaTime;
+        body.MovePosition(body.position + movement * runSpeed * Time.fixedUnscaledDeltaTime);
 
-        body.MovePosition(position);
+        //Vector2 position = body.position;
+        //position.x = position.x + runSpeed * horizontal * Time.deltaTime;
+        //position.y = position.y + runSpeed * vertical * Time.deltaTime;
+
+        //body.MovePosition(position);
     }
 
     

@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         body.MovePosition(body.position + movement * runSpeed * Time.fixedUnscaledDeltaTime);
+        body.velocity = new Vector2(movement.x, movement.y);
 
         //Vector2 position = body.position;
         //position.x = position.x + runSpeed * horizontal * Time.deltaTime;

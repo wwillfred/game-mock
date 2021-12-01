@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
+    //inventory variables
+    public bool hasHatchet = false; //player starts out game without hatchet
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -42,8 +45,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //Debug.Log(vertical);
-        //Debug.Log(horizontal);
+        //Debug.Log(movement);
     }
 
     //called before each update of the physics engine

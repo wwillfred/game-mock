@@ -6,8 +6,10 @@ public class DialogActivator : MonoBehaviour, IInteractable
     [SerializeField] private DialogObject dialogObject; //the dialogObject that the DialogUI system will display when the player interacts with this
 
     //when a Collider2D (presumably the player) triggers this object, tell them that this is what they are interacting with
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Collider2D other = collision.collider;
+        Debug.Log("player is colliding!");
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             player.Interactable = this; //tell the playerController that this is the object they're interacting with
@@ -15,8 +17,9 @@ public class DialogActivator : MonoBehaviour, IInteractable
     }
 
     //when a Collider2D (presumably the player) leaves, tell them that they're not interacting with anything
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D collision)
     {
+        Collider2D other = collision.collider;
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             if (player.Interactable is DialogActivator dialogActivator && dialogActivator == this) //double check that the player was actually interacting with something and that it was this

@@ -6,8 +6,9 @@ public class BushController : MonoBehaviour, IInteractable
     [SerializeField] private DialogObject dialog_playerCanClear; //dialog to show when player interacts with the item needed to clear bush
 
     //when a Collider2D (presumably the player) triggers this object, tell them that this is what they are interacting with
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        Collider2D other = collision.collider;
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             player.Interactable = this; //tell the playerController that this is the object they're interacting with
@@ -17,8 +18,9 @@ public class BushController : MonoBehaviour, IInteractable
     }
 
     //when a Collider2D (presumably the player) leaves, tell them that they're not interacting with anything
-    private void OnTriggerExit2D(Collider2D other)
+    private void OnCollisionExit2D(Collision2D collision)
     {
+        Collider2D other = collision.collider;
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             if (player.Interactable is DialogActivator dialogActivator && dialogActivator == this) //double check that the player was actually interacting with something and that it was this
@@ -37,10 +39,7 @@ public class BushController : MonoBehaviour, IInteractable
         }
         else if (playerController.hasHatchet)
         {
-            if (playerController.Interactable is DialogActivator dialogActivator && dialogActivator == this) //double check that the player was actually interacting with something and that it was this
-            {
-                playerController.Interactable = null;
-            }
+            playerController.Interactable = null;
 
             Destroy(this);
 

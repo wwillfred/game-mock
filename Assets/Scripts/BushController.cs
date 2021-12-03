@@ -41,7 +41,12 @@ public class BushController : MonoBehaviour, IInteractable
         {
             playerController.Interactable = null;
 
-            Destroy(this);
+            foreach (Transform child in transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+
+            Destroy(this.gameObject);
 
             playerController.DialogUI.ShowDialog(dialog_playerCanClear); //show the dialog to explain that the player just cleared the bush
 

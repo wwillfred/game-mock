@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
     //inventory variables
-    public bool hasHatchet = false; //player starts out game without hatchet
+    public bool hasHatchet = false; //hatched is needed for clearing the bush
 
     // Start is called before the first frame update
     private void Start()
@@ -59,6 +59,17 @@ public class PlayerController : MonoBehaviour
         //position.y = position.y + runSpeed * vertical * Time.deltaTime;
 
         //body.MovePosition(position);
+    }
+
+    //method for bush to know if it can be destroyed without knowing what item is needed
+    public bool canClearBush()
+    {
+        if (hasHatchet)
+        {
+            return true;
+        }
+        else return false;
+
     }
 
     

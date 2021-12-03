@@ -33,20 +33,21 @@ public class BushController : MonoBehaviour, IInteractable
     //the playerController calls this when the user presses an interact key
     public void Interact(PlayerController playerController)
     {
-        if (!playerController.hasHatchet)
+        if (!playerController.canClearBush())
         {
             playerController.DialogUI.ShowDialog(dialog_playerCannotClear);
         }
-        else if (playerController.hasHatchet)
+        else if (playerController.canClearBush())
         {
-            playerController.Interactable = null;
+            playerController.Interactable = null; //we have probably set this to true, so we need to make it false b/c the bush is getting destroyed
 
+            //the bush is currently made of child gameObjects, so we need to destroy those
             foreach (Transform child in transform)
             {
                 GameObject.Destroy(child.gameObject);
             }
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); //and finally we need to destroy the bush
 
             playerController.DialogUI.ShowDialog(dialog_playerCanClear); //show the dialog to explain that the player just cleared the bush
 

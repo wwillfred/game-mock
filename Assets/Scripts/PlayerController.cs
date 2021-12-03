@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
     //inventory variables
-    public bool hasHatchet = false; //hatched is needed for clearing the bush
+    public bool hasHatchet = false; //hatchet is needed for clearing the bush
 
     // Start is called before the first frame update
     private void Start()
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         //body.MovePosition(position);
     }
 
-    //method for bush to know if it can be destroyed without knowing what item is needed
+    //method for bush to know if bush can be destroyed without knowing what item is needed
     public bool canClearBush()
     {
         if (hasHatchet)
@@ -70,6 +70,17 @@ public class PlayerController : MonoBehaviour
         }
         else return false;
 
+    }
+
+    public void findItemInCar()
+    {
+        if (hasHatchet)
+        {
+            Debug.LogWarning("Player already has hatchet. Erroneous call to findItemInCar() method.", this); //nothing should call the findItemInCar() method if the player already has the item
+            return;
+        }
+
+        hasHatchet = true;
     }
 
     

@@ -1495,7 +1495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogUI: {fileID: 1345760417}
   runSpeed: 4
-  hasHatchet: 1
+  hasHatchet: 0
 --- !u!61 &1475290418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2150,6 +2150,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866276245}
   - component: {fileID: 1866276244}
+  - component: {fileID: 1866276246}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -2222,6 +2223,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!114 &1866276246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866276243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ade49289ea24673be87568f0bdff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerFindsItem: {fileID: 11400000, guid: a2ec063f4c3894d37ac44bc0b8d8d4aa, type: 2}
+  playerFindsNothing: {fileID: 11400000, guid: efcb5ea5cbb3a4a4681e03c02a40fd43, type: 2}
 --- !u!1 &1920794116
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class BushController : MonoBehaviour, IInteractable
+public class CarController : MonoBehaviour, IInteractable
 {
-    [SerializeField] private DialogObject dialog_playerCannotClear; //dialog to show when the player interacts without item needed to clear bush
-    [SerializeField] private DialogObject dialog_playerCanClear; //dialog to show when player interacts with the item needed to clear bush
+    [SerializeField] private DialogObject playerFindsItem; //dialog to show when the player interacts with car and obtains item
+    [SerializeField] private DialogObject playerFindsNothing; //dialog to show when player interacts with car and there's nothing to find
 
     //when a Collider2D (presumably the player) triggers this object, tell them that this is what they are interacting with
     private void OnCollisionEnter2D(Collision2D collision)
@@ -30,27 +30,18 @@ public class BushController : MonoBehaviour, IInteractable
         }
     }
 
+    //note: assumption here is that the player needs to interact with the car in order to find something that will enable player to clear the bush.
     //the playerController calls this when the user presses an interact key
     public void Interact(PlayerController playerController)
     {
         if (!playerController.canClearBush())
         {
-            playerController.DialogUI.ShowDialog(dialog_playerCannotClear);
+            playerController.findItemInCar(); //tell the playerController to handle finding the item
+            playerController.DialogUI.ShowDialog(playerFindsItem); //tell dialog system to explain to player it has found the item
         }
         else if (playerController.canClearBush())
         {
-            playerController.Interactable = null; //we have probably set this to true, so we need to make it false b/c the bush is getting destroyed
-
-            //the bush is currently made of child gameObjects, so we need to destroy those
-            foreach (Transform child in transform)
-            {
-                GameObject.Destroy(child.gameObject);
-            }
-
-            Destroy(this.gameObject); //and finally we need to destroy the bush
-
-            playerController.DialogUI.ShowDialog(dialog_playerCanClear); //show the dialog to explain that the player just cleared the bush
-
+            playerController.DialogUI.ShowDialog(playerFindsNothing); //explain to player there's nothing to find in car
         }
     }
 }

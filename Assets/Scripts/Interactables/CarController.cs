@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour, IInteractable
         {
             player.Interactable = this; //tell the playerController that this is the object they're interacting with
 
-            Debug.Log("Player is colliding with bush!");
+            Debug.Log("Player is colliding with car!");
         }
     }
 
@@ -23,10 +23,11 @@ public class CarController : MonoBehaviour, IInteractable
         Collider2D other = collision.collider;
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
-            if (player.Interactable is DialogActivator dialogActivator && dialogActivator == this) //double check that the player was actually interacting with something and that it was this
+            if (player.Interactable is CarController carController && carController == this) //double check that the player was actually interacting with something and that it was this
             {
                 player.Interactable = null;
             }
+            else Debug.LogWarning("attempted to set player.Interactable to null, but player wasn't interacting with car");
         }
     }
 

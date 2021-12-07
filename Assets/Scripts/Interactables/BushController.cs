@@ -24,11 +24,11 @@ public class BushController : MonoBehaviour, IInteractable
         Collider2D other = collision.collider;
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
-            if (player.Interactable is DialogActivator dialogActivator && dialogActivator == this) //double check that the player was actually interacting with something and that it was this
+            if (player.Interactable is BushController bushController && bushController == this) //double check that the player was actually interacting with a bushController and it was this
             {
                 player.Interactable = null;
             }
-            else Debug.Log("attempted to set player.Interactable to null, but player wasn't interacting with bush");
+            else Debug.LogWarning("attempted to set player.Interactable to null, but player wasn't interacting with bush");
         }
     }
 

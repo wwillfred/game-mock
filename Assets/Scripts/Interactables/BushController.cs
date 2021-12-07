@@ -41,7 +41,6 @@ public class BushController : MonoBehaviour, IInteractable
         }
         else if (playerController.canClearBush())
         {
-            playerController.Interactable = null; //we have probably set this to true, so we need to make it false b/c the bush is getting destroyed
 
             //the bush is currently made of child gameObjects, so we need to destroy those
             foreach (Transform child in transform)
@@ -50,6 +49,7 @@ public class BushController : MonoBehaviour, IInteractable
             }
 
             Destroy(this.gameObject); //and finally we need to destroy the bush
+                                      //note: no need to call the "player.Interactable = null" here, because as soon as the bush is destroyed, this "OnCollisionExit2D" is called
 
             playerController.DialogUI.ShowDialog(dialog_playerCanClear); //show the dialog to explain that the player just cleared the bush
 

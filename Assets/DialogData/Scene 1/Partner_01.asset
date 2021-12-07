@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0597f637905884e04a4cc87a031f1530, type: 3}
-  m_Name: Player_01
+  m_Name: Partner_01
   m_EditorClassIdentifier: 
   dialog:
   - So I think I figured out what the issue is...

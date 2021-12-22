@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D body;
 
     Vector2 movement;
-    //float horizontal; //calling these variables outside the methods so we can keep track of them between the Update() and FixedUpdate() methods
-    //float vertical;
 
     public float runSpeed = 20.0f;
 

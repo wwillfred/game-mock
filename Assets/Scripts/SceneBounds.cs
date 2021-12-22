@@ -3,12 +3,12 @@ using UnityEngine;
 public class SceneBounds : MonoBehaviour
 {
     Rigidbody2D body;
-    BoxCollider2D collider;
+    BoxCollider2D boxCollider;
 
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -16,14 +16,16 @@ public class SceneBounds : MonoBehaviour
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             Vector2 playerPosition = other.gameObject.transform.position;
+            Vector2 playerColliderSize = other.GetComponent<BoxCollider2D>().size;
+
             Vector2 cameraPosition = gameObject.transform.position;
-            Vector2 cameraSize = collider.size;
+            Vector2 cameraSize = boxCollider.size;
 
-            Debug.Log("Player is triggering scene bounds. Player position is: " + playerPosition + ". Camera position is: " + cameraPosition);
+            Debug.Log("Player is triggering scene bounds. Player position is: " + playerPosition + ". Player size is: " + playerColliderSize + ". Camera position is: " + cameraPosition + ". Camera size is: " + cameraSize);
 
-            if (playerPosition.x > cameraPosition.x && playerPosition.y < (cameraPosition.y + (cameraSize.y /2)) && playerPosition.y > (cameraPosition.y - (cameraSize.y /2)))
+            if (playerPosition.x + playerColliderSize.x /2 >= cameraPosition.x + cameraSize.x / 2 && playerPosition.y + playerColliderSize.y / 2 < cameraPosition.y + cameraSize.y / 2 && playerPosition.y - playerColliderSize.y /2 > cameraPosition.y - cameraSize.y /2)
             {
-                Debug.Log("Player is leaving right side of screen");
+                Debug.Log("Player is leaving RH side of screen.");
             }
 
         }

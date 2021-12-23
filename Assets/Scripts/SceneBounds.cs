@@ -23,9 +23,14 @@ public class SceneBounds : MonoBehaviour
 
             Debug.Log("Player is triggering scene bounds. Player position is: " + playerPosition + ". Player size is: " + playerColliderSize + ". Camera position is: " + cameraPosition + ". Camera size is: " + cameraSize);
 
+            //is RH edge of player equal to or more than RH edge of collider, and is player between top and bottom edges of collider?
             if (playerPosition.x + playerColliderSize.x /2 >= cameraPosition.x + cameraSize.x / 2 && playerPosition.y + playerColliderSize.y / 2 < cameraPosition.y + cameraSize.y / 2 && playerPosition.y - playerColliderSize.y /2 > cameraPosition.y - cameraSize.y /2)
             {
-                Debug.Log("Player is leaving RH side of screen.");
+                Debug.Log("Player is leaving RH side of screen. Player position is: " + playerPosition + ". Player size is: " + playerColliderSize + ". Camera position is: " + cameraPosition + ". Camera size is: " + cameraSize);
+            }
+            else if (playerPosition.y + playerColliderSize.y /2 >= cameraPosition.y + cameraSize.y /2 && playerPosition.x + playerColliderSize.x / 2 < cameraPosition.x + cameraSize.x /2 && playerPosition.x - playerColliderSize.x /2 > cameraPosition.x - cameraSize.x / 2)
+            {
+                Debug.Log("Player has left the top edge of screen. Player position is: " + playerPosition + ". Player size is: " + playerColliderSize + ". Camera position is: " + cameraPosition + ". Camera size is: " + cameraSize);
             }
 
         }

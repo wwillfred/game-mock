@@ -5,6 +5,8 @@ public class SceneBounds : MonoBehaviour
     Rigidbody2D body;
     BoxCollider2D boxCollider;
 
+    public Camera cam;
+
     private void Start()
     {
         body = GetComponent<Rigidbody2D>();
@@ -13,6 +15,8 @@ public class SceneBounds : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        Vector3 camPosition = cam.transform.position;
+
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
             float playerRHEdge = other.gameObject.transform.position.x + other.GetComponent<BoxCollider2D>().size.x / 2;
@@ -37,20 +41,28 @@ public class SceneBounds : MonoBehaviour
             if (playerRHEdge >= sceneRHEdge && playerTopEdge < sceneTopEdge && playerBottomEdge > sceneBottomEdge)
             {
                 Debug.Log("Player is leaving RH edge of scene. Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
+                camPosition.x = camPosition.x + 10;
+                cam.transform.position = camPosition;
             }
             //is top edge of player equal to or more than top edge of scene, and is player between LH and RH edges of scene?
             else if (playerTopEdge >= sceneTopEdge && playerRHEdge < sceneRHEdge && playerLHEdge > sceneLHEdge)
             {
                 Debug.Log("Player is leaving top edge of scene. Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge);
+                camPosition.y = camPosition.y + 9;
+                cam.transform.position = camPosition;
             }
             //is LH edge of player equal to or less than LH edge of scene, and is player between top and bottom edges of scene?
             else if (playerLHEdge <= sceneLHEdge && playerTopEdge < sceneTopEdge && playerBottomEdge > sceneBottomEdge)
             {
                 Debug.Log("Player is leaving LH edge of scene. Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
+                camPosition.x = camPosition.x - 10;
+                cam.transform.position = camPosition;
             }
             else if (playerBottomEdge <= sceneBottomEdge && playerLHEdge > sceneLHEdge && playerRHEdge < sceneRHEdge)
             {
                 Debug.Log("Player is leaving bottom edge of scene. Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge + ". Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge);
+                camPosition.y = camPosition.x - 9;
+                cam.transform.position = camPosition;
             }
 
         }

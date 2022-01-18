@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     //inventory variables
     public bool hasHatchet = false; //hatchet is needed for clearing the bush
+    public bool hasQuarryGateKey = false; //gate key for scene 4 is obtained by opening toolbox in scene 3
 
     // Start is called before the first frame update
     private void Start()
@@ -57,6 +58,16 @@ public class PlayerController : MonoBehaviour
         //position.y = position.y + runSpeed * vertical * Time.deltaTime;
 
         //body.MovePosition(position);
+    }
+
+    //method for toolbox to call to know whether player has already opened toolbox
+    public bool hasOpenedToolBox()
+    {
+        if (hasQuarryGateKey)
+        {
+            return true;
+        }
+        else return false;
     }
 
     //method for bush to know if bush can be destroyed without knowing what item is needed

@@ -31,7 +31,7 @@ public class DialogActivator : MonoBehaviour, IInteractable
     }
 
     //the playerController calls this when the user presses an interact key
-    public void Interact(PlayerController playerController)
+    public virtual void Interact(PlayerController playerController)
     {
         playerController.DialogUI.ShowDialog(dialogObject);
     }

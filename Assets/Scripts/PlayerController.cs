@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private DialogUI dialogUI; //we need to be able to call the Canvas' dialogUI IsOpen() method so we can disable input if so
+    [SerializeField] private DialogUI dialogUI; //we need to be able to call the Canvas' dialogUI IsOpen() method so we can disable input if true
 
     Rigidbody2D body;
 

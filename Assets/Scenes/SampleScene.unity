@@ -3287,7 +3287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -10, y: 9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9176,8 +9176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogObject: {fileID: 0}
-  playerFindsKey: {fileID: 0}
-  playerFindsNothing: {fileID: 0}
+  dialog_playerFindsKey: {fileID: 11400000, guid: 01469901c0a8948719c6c1257408c7dd, type: 2}
+  dialog_playerFindsNothing: {fileID: 11400000, guid: bbf34e17c62694a5eb55a07c99adce70, type: 2}
   hasBeenOpenedByPlayer: 0
 --- !u!1001 &1328381649
 PrefabInstance:
@@ -10492,7 +10492,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475290413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.04, y: 1.81, z: 0}
+  m_LocalPosition: {x: -6.24, y: 8.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

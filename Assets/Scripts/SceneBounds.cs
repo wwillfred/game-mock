@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SceneBounds : MonoBehaviour
 {
-    Rigidbody2D body;
+    Rigidbody2D body; //do I need this variable?
     BoxCollider2D boxCollider;
 
     private void Start()

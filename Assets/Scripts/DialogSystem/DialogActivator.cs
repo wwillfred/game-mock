@@ -1,9 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 //script to attach to NPC's and other objects in game that generate dialog when the user interacts
+//note: this script also includes a movement coroutine, so that inherited classes don't need to define this coroutine every class
+
 public class DialogActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogObject dialogObject; //the dialogObject that the DialogUI system will display when the player interacts with this
+
+    public Vector2 translateDelta; //the delta used in the Move() coroutine
+    public float duration; //the specified time
 
     //when a Collider2D (presumably the player) triggers this object, tell them that this is what they are interacting with
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,4 +41,21 @@ public class DialogActivator : MonoBehaviour, IInteractable
     {
         playerController.DialogUI.ShowDialog(dialogObject);
     }
+
+
+    protected IEnumerator Move(Vector3 targetPosition, float duration)
+    {
+        float timeElapsed = 0;
+        Vector3 startPosition = transform.position;
+
+        while (timeElapsed < duration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = targetPosition;
+
+    }
+    
 }

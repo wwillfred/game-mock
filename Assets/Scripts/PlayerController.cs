@@ -17,8 +17,9 @@ public class PlayerController : MonoBehaviour
     public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
     //inventory variables
-    public bool hasHatchet = false; //hatchet is needed for clearing the bush
+    /*public bool hasHatchet = false;*/ //hatchet is needed for clearing the bush
     public bool hasQuarryGateKey = false; //gate key for scene 4 is obtained by opening toolbox in scene 3
+    public bool hasSpokenToQuarryWorkerB = false; //quarry worker A needs to know
 
     // Start is called before the first frame update
     private void Start()
@@ -59,38 +60,5 @@ public class PlayerController : MonoBehaviour
 
         //body.MovePosition(position);
     }
-
-    //method for toolbox to call to know whether player has already opened toolbox
-    public bool hasOpenedToolBox()
-    {
-        if (hasQuarryGateKey)
-        {
-            return true;
-        }
-        else return false;
-    }
-
-    //method for bush to know if bush can be destroyed without knowing what item is needed
-    public bool canClearBush()
-    {
-        if (hasHatchet)
-        {
-            return true;
-        }
-        else return false;
-
-    }
-
-    public void findItemInCar()
-    {
-        if (hasHatchet)
-        {
-            Debug.LogWarning("Player already has hatchet. Erroneous call to findItemInCar() method.", this); //nothing should call the findItemInCar() method if the player already has the item
-            return;
-        }
-
-        hasHatchet = true;
-    }
-
     
 }

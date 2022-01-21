@@ -32,9 +32,10 @@ public class BushController : MonoBehaviour, IInteractable
         }
     }
 
-    //the playerController calls this when the user presses an interact key
+    //commenting out for now - need to delete entire script eventually!
     public void Interact(PlayerController playerController)
     {
+        /*
         if (!playerController.canClearBush())
         {
             playerController.DialogUI.ShowDialog(dialog_playerCannotClear);
@@ -54,5 +55,6 @@ public class BushController : MonoBehaviour, IInteractable
             playerController.DialogUI.ShowDialog(dialog_playerCanClear); //show the dialog to explain that the player just cleared the bush
 
         }
+        */
     }
 }

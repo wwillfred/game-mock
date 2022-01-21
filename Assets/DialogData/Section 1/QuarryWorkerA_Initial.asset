@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0597f637905884e04a4cc87a031f1530, type: 3}
-  m_Name: CannotClearBush
+  m_Name: QuarryWorkerA_Initial
   m_EditorClassIdentifier: 
   dialog:
-  - There is a thorny bush in your way
+  - Not a bad spot to take a break between shifts.
   responses: []

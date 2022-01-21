@@ -31,10 +31,10 @@ public class CarController : MonoBehaviour, IInteractable
         }
     }
 
-    //note: assumption here is that the player needs to interact with the car in order to find something that will enable player to clear the bush.
-    //the playerController calls this when the user presses an interact key
+    //commenting this out b/c of design change; need to eventually delete this entire script
     public void Interact(PlayerController playerController)
     {
+        /*
         if (!playerController.canClearBush())
         {
             playerController.findItemInCar(); //tell the playerController to handle finding the item
@@ -44,5 +44,6 @@ public class CarController : MonoBehaviour, IInteractable
         {
             playerController.DialogUI.ShowDialog(playerFindsNothing); //explain to player there's nothing to find in car
         }
+        */
     }
 }

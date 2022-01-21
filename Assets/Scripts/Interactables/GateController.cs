@@ -9,7 +9,7 @@ public class GateController : DialogActivator
     public bool gateOpen = false; //not sure if I need this variable
 
     public float openHeight = 4.5f;
-    public float duration = 1;
+    public float openTime = 1;
 
     Vector3 closePosition;
 
@@ -29,12 +29,13 @@ public class GateController : DialogActivator
             else
             {
                 Vector3 openPosition = closePosition + Vector3.up * openHeight;
-                StartCoroutine(MoveGate(openPosition));
+                StartCoroutine(Move(openPosition, openTime));
             }
         }
     }
 
     //moves gate to specified target position
+    /*
     IEnumerator MoveGate(Vector3 targetPosition)
     {
         float timeElapsed = 0;
@@ -48,5 +49,5 @@ public class GateController : DialogActivator
         }
         transform.position = targetPosition;
     }
-
+    */
 }

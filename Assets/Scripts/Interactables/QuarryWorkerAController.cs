@@ -7,8 +7,9 @@ public class QuarryWorkerAController : DialogActivator
 
     [SerializeField] private GameObject truck;
 
-    public float workingTranslateX = 20;
-    public float timeToWorkingTranslateX = 10;
+    public Vector2 workingPosition;
+    public float timeToWorkingPositionX = 10;
+    public float timeToWorkingPositionY = 1;
 
     public override void Interact(PlayerController playerController)
     {
@@ -18,19 +19,21 @@ public class QuarryWorkerAController : DialogActivator
         }
         else
         {
-            /*
+            
             playerController.DialogUI.ShowDialog(dialog_ReturnToQuarry);
 
-            Vector3 workingPosition = transform.position + Vector3.right * workingTranslateX;
-            StartCoroutine(move(workingPosition));
-
-            move();
-            */
+            //Vector3 workingPosition = transform.position + Vector3.right * workingTranslateX;
+            GoBackToWork();            
         }
     }
 
-    private void move()
+    private void GoBackToWork()
     {
+        Vector3 targetPosition = new Vector3(workingPosition.x, transform.position.y, transform.position.z);
+        StartCoroutine(Move(targetPosition, timeToWorkingPositionX));
+
+        targetPosition.y = workingPosition.y;
+        StartCoroutine(Move(targetPosition, timeToWorkingPositionY));
 
     }
 }

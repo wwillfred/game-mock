@@ -8,9 +8,6 @@ public class DialogActivator : MonoBehaviour, IInteractable
 {
     [SerializeField] private DialogObject dialogObject; //the dialogObject that the DialogUI system will display when the player interacts with this
 
-    public Vector2 translateDelta; //the delta used in the Move() coroutine
-    public float duration; //the specified time
-
     //when a Collider2D (presumably the player) triggers this object, tell them that this is what they are interacting with
     private void OnCollisionEnter2D(Collision2D collision)
     {

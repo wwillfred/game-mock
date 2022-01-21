@@ -2337,7 +2337,7 @@ MonoBehaviour:
   dialog_playerDoesNotHaveKey: {fileID: 11400000, guid: 6bdda0556b4184c9fa04d56adfdbbfa1, type: 2}
   gateOpen: 0
   openHeight: 4.5
-  duration: 2
+  openTime: 1
 --- !u!1001 &313851446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5397,8 +5397,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogObject: {fileID: 0}
   dialog_InitialDialog: {fileID: 11400000, guid: 943dfeea178094256ba0293ca21affca, type: 2}
-  dialog_ReturnToQuarry: {fileID: 0}
+  dialog_ReturnToQuarry: {fileID: 11400000, guid: 8107c70ac42ad40cc8ded8e4dfa22398, type: 2}
   truck: {fileID: 1585821273}
+  workingPosition: {x: 15, y: 9.46}
+  timeToWorkingPositionX: 10
+  timeToWorkingPositionY: 1
 --- !u!1 &796312179
 GameObject:
   m_ObjectHideFlags: 0
@@ -10586,7 +10589,7 @@ MonoBehaviour:
   dialogUI: {fileID: 1345760417}
   runSpeed: 4
   hasQuarryGateKey: 0
-  hasSpokenToQuarryWorkerB: 0
+  hasSpokenToQuarryWorkerB: 1
 --- !u!61 &1475290418
 BoxCollider2D:
   m_ObjectHideFlags: 0

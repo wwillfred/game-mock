@@ -22,11 +22,11 @@ public class DialogUI : MonoBehaviour
     }
 
     //public method for specifying a dialogObject (with a String array) and for "typewritering" the strings
-    public void ShowDialog(DialogObject dialogObject)
+    public Coroutine ShowDialog(DialogObject dialogObject)
     {
         IsOpen = true; //dialog is open!
         dialogBox.SetActive(true); // make the dialog box appear!
-        StartCoroutine(StepThroughDialog(dialogObject)); // calls the private method for typewritering the dialog
+        return StartCoroutine(StepThroughDialog(dialogObject)); // calls the private method for typewritering the dialog
     }
 
     //DialogUI calls this as a coroutine in the ShowDialog() method

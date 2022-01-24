@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class QuarryWorkerAController : DialogActivator
@@ -20,17 +21,18 @@ public class QuarryWorkerAController : DialogActivator
         else
         {
             
-            playerController.DialogUI.ShowDialog(dialog_ReturnToQuarry);
+            //playerController.DialogUI.ShowDialog(dialog_ReturnToQuarry);
 
-            //Vector3 workingPosition = transform.position + Vector3.right * workingTranslateX;
-            GoBackToWork();            
+            StartCoroutine(GoBackToWork(playerController));            
         }
     }
 
-    private void GoBackToWork()
+    private IEnumerator GoBackToWork(PlayerController playerController)
     {
+        yield return playerController.DialogUI.ShowDialog(dialog_ReturnToQuarry);
+
         Vector3 targetPosition = new Vector3(workingPosition.x, transform.position.y, transform.position.z);
-        StartCoroutine(Move(targetPosition, timeToWorkingPositionX));
+        yield return StartCoroutine(Move(targetPosition, timeToWorkingPositionX));
 
         targetPosition.y = workingPosition.y;
         StartCoroutine(Move(targetPosition, timeToWorkingPositionY));

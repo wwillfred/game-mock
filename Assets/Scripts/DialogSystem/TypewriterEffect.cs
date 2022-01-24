@@ -33,6 +33,6 @@ public class TypewriterEffect : MonoBehaviour
             yield return null;
         }
 
-        textLabel.text = textToType; // just to make sure that at the end of this coroutine, the text label equals the entire string we wanted to type
+        textLabel.text = textToType; // just to make sure that the text label equals now the entire string we wanted to type
     }
 }

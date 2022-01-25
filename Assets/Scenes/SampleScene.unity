@@ -4703,8 +4703,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1459797207
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 71b716fc24e3f4081a997de80ddc2639, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5399,8 +5399,11 @@ MonoBehaviour:
   dialog_InitialDialog: {fileID: 11400000, guid: 943dfeea178094256ba0293ca21affca, type: 2}
   dialog_ReturnToQuarry: {fileID: 11400000, guid: 8107c70ac42ad40cc8ded8e4dfa22398, type: 2}
   truck: {fileID: 1585821273}
-  workingPosition: {x: 13, y: 9.46}
-  timeToWorkingPositionX: 8
+  truckWorkingPosition: {x: 13, y: 8}
+  quarryWorkerB: {fileID: 704567460}
+  quarryWorkerBWorkingPosition: {x: 13, y: 9}
+  workingPosition: {x: 13, y: 10}
+  timeToWorkingPositionX: 5
   timeToWorkingPositionY: 1
 --- !u!1 &796312179
 GameObject:
@@ -15335,6 +15338,14 @@ PrefabInstance:
     - target: {fileID: 1907087755512970340, guid: 6b945d625e9984c069cb28184d871ed1, type: 3}
       propertyPath: m_Name
       value: Truck_Temp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643806326812018534, guid: 6b945d625e9984c069cb28184d871ed1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3643806326812018534, guid: 6b945d625e9984c069cb28184d871ed1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1459797207
       objectReference: {fileID: 0}
     - target: {fileID: 5598628312482532377, guid: 6b945d625e9984c069cb28184d871ed1, type: 3}
       propertyPath: m_RootOrder

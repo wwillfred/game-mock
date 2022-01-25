@@ -5399,8 +5399,8 @@ MonoBehaviour:
   dialog_InitialDialog: {fileID: 11400000, guid: 943dfeea178094256ba0293ca21affca, type: 2}
   dialog_ReturnToQuarry: {fileID: 11400000, guid: 8107c70ac42ad40cc8ded8e4dfa22398, type: 2}
   truck: {fileID: 1585821273}
-  workingPosition: {x: 15, y: 9.46}
-  timeToWorkingPositionX: 10
+  workingPosition: {x: 13, y: 9.46}
+  timeToWorkingPositionX: 8
   timeToWorkingPositionY: 1
 --- !u!1 &796312179
 GameObject:

@@ -31,8 +31,10 @@ public class QuarryWorkerAController : DialogActivator
     {
         yield return playerController.DialogUI.ShowDialog(dialog_ReturnToQuarry);
 
+        GetComponent<BoxCollider2D>().enabled = false;
         Vector3 targetPosition = new Vector3(workingPosition.x, transform.position.y, transform.position.z);
         yield return StartCoroutine(Move(targetPosition, timeToWorkingPositionX));
+        GetComponent<BoxCollider2D>().enabled = true;
 
         targetPosition.y = workingPosition.y;
         StartCoroutine(Move(targetPosition, timeToWorkingPositionY));

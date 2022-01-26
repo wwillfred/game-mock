@@ -12,12 +12,13 @@ public class PlayerController : MonoBehaviour
 
     public float runSpeed = 20.0f;
 
+    public bool canMove = true; //other scripts will set this variable when events happen
+
     public DialogUI DialogUI => dialogUI; //so the DialogActivator class of some other gameObject can call the DialogObject.ShowDialog() method
 
     public IInteractable Interactable { get; set; } //NPC's and other game objects must be able to tell the playerController that they are the object the player is interacting with
 
     //inventory variables
-    /*public bool hasHatchet = false;*/ //hatchet is needed for clearing the bush
     public bool hasQuarryGateKey = false; //gate key for scene 4 is obtained by opening toolbox in scene 3
     public bool hasSpokenToQuarryWorkerB = false; //quarry worker A needs to know
 
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (dialogUI.IsOpen) return; //if there's dialog going on, no need to pick up on other player input!
+        if (!canMove) return;
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

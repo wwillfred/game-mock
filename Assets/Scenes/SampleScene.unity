@@ -3414,7 +3414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 9, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5403,8 +5403,8 @@ MonoBehaviour:
   quarryWorkerB: {fileID: 704567460}
   quarryWorkerBWorkingPosition: {x: 13, y: 9}
   workingPosition: {x: 13, y: 10}
-  timeToWorkingPositionX: 5
-  timeToWorkingPositionY: 1
+  offScreenPositionX: -4.42
+  timeToOffScreenPositionX: 1.33
 --- !u!1 &796312179
 GameObject:
   m_ObjectHideFlags: 0
@@ -9560,6 +9560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogBox: {fileID: 1684707442}
   textLabel: {fileID: 542626813}
+  playerController: {fileID: 1475290417}
 --- !u!114 &1345760418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10550,7 +10551,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475290413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.16, y: 9.04, z: 0}
+  m_LocalPosition: {x: 1.04, y: 1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -10591,6 +10592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogUI: {fileID: 1345760417}
   runSpeed: 4
+  canMove: 1
   hasQuarryGateKey: 0
   hasSpokenToQuarryWorkerB: 1
 --- !u!61 &1475290418

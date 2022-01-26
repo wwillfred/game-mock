@@ -10,8 +10,10 @@ public class DialogUI : MonoBehaviour
 
     public bool IsOpen { get; private set;} //outsiders can only check whether dialog is open
 
-    private ResponseHandler responseHandler;
-    private TypewriterEffect typewriterEffect; // pointer to the class that produces the typewriter effect 
+    public PlayerController playerController;
+
+    private ResponseHandler responseHandler; //both the DialogUI and ResponseHandler and TypewriterEffect scripts are attached to the same object, so they can "Get Component" each other
+    private TypewriterEffect typewriterEffect;
 
     //called before first frame
     private void Start()
@@ -25,6 +27,7 @@ public class DialogUI : MonoBehaviour
     public Coroutine ShowDialog(DialogObject dialogObject)
     {
         IsOpen = true; //dialog is open!
+        playerController.canMove = false;
         dialogBox.SetActive(true); // make the dialog box appear!
         return StartCoroutine(StepThroughDialog(dialogObject)); // calls the private method for typewritering the dialog
     }
@@ -57,6 +60,7 @@ public class DialogUI : MonoBehaviour
     private void CloseDialogBox()
     {
         IsOpen = false; //dialog is not open!
+        playerController.canMove = true;
         dialogBox.SetActive(false); // make dialog box invisible to user
         textLabel.text = string.Empty; // make sure there's no residual text hidden in the box
     }

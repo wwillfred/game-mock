@@ -17,6 +17,13 @@ public class QuarryWorkerAController : DialogActivator
     public float timeToOffScreenPositionX = 1.5f;
     //public float timeToWorkingPositionY = 1;
 
+    /*
+    private void Start()
+    {
+        truck.transform.position = truckWorkingPosition;//only need this to test transition from scene 2 to scene 5 without truck
+    }
+    */
+
     public override void Interact(PlayerController playerController)
     {
         if (!playerController.hasSpokenToQuarryWorkerB)

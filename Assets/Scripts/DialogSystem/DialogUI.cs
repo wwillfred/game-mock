@@ -10,7 +10,7 @@ public class DialogUI : MonoBehaviour
 
     public bool IsOpen { get; private set;} //outsiders can only check whether dialog is open
 
-    public PlayerController playerController;
+    public PlayerController playerController; //this is assigned in the editor
 
     private ResponseHandler responseHandler; //both the DialogUI and ResponseHandler and TypewriterEffect scripts are attached to the same object, so they can "Get Component" each other
     private TypewriterEffect typewriterEffect;

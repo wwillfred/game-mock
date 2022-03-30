@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SceneBounds : MonoBehaviour
+public class CameraBounds : MonoBehaviour
 {
     BoxCollider2D boxCollider;
     Bounds bounds;
@@ -30,22 +30,6 @@ public class SceneBounds : MonoBehaviour
             float sceneBottomEdge = gameObject.transform.position.y - boxCollider.size.y / 2;
 
             Debug.Log("Player is triggering scene bounds. Player edges are: " + playerRHEdge + ", " + playerBottomEdge + ", " + playerLHEdge + ", " + playerTopEdge + ". Scene edges are: " + sceneRHEdge + ", " + sceneBottomEdge + ", " + sceneLHEdge + ", " + sceneTopEdge);
-
-            //is RH edge of player equal to or more than RH edge of scene, and is player between top and bottom edges of scene?
-            /*
-            if (playerRHEdge >= sceneRHEdge && playerTopEdge < sceneTopEdge && playerBottomEdge > sceneBottomEdge)
-            {
-                Debug.Log("Player is leaving RH edge of scene. Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
-                camPosition.x = camPosition.x + 10;
-                gameObject.transform.position = camPosition;
-            } */
-            /*if (CoreLogic.CheckForPlayerIntersectingRHEdgeOfScene(boxCollider.bounds, playerBounds))
-            {
-                Debug.Log("Player is leaving RH edge of scene. Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
-                camPosition.x = camPosition.x + 10;
-                gameObject.transform.position = camPosition;
-            }
-            */
 
             if (Utility.CheckForPlayerIntersectingRHEdgeOfScene(bounds, playerBounds)) MoveCameraRight();
 

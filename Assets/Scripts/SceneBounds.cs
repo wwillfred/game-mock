@@ -3,6 +3,8 @@ using UnityEngine;
 public class SceneBounds : MonoBehaviour
 {
     BoxCollider2D boxCollider;
+    Bounds bounds;
+    private Vector3 camPosition;
 
     private void Start()
     {
@@ -11,7 +13,9 @@ public class SceneBounds : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Vector3 camPosition = gameObject.transform.position;
+        camPosition = gameObject.transform.position;
+        bounds = boxCollider.bounds;
+        Bounds playerBounds = other.GetComponent<BoxCollider2D>().bounds;
 
         if (other.CompareTag("Player") && other.TryGetComponent(out PlayerController player)) //does this have the Player tag and the PlayerController script attached?
         {
@@ -35,12 +39,16 @@ public class SceneBounds : MonoBehaviour
                 camPosition.x = camPosition.x + 10;
                 gameObject.transform.position = camPosition;
             } */
-            if (IsPlayerLeavingRHEdgeOfScene(other.bounds))
+            /*if (CoreLogic.CheckForPlayerIntersectingRHEdgeOfScene(boxCollider.bounds, playerBounds))
             {
                 Debug.Log("Player is leaving RH edge of scene. Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
                 camPosition.x = camPosition.x + 10;
                 gameObject.transform.position = camPosition;
             }
+            */
+
+            if (Utility.CheckForPlayerIntersectingRHEdgeOfScene(bounds, playerBounds)) MoveCameraRight();
+
             //is top edge of player equal to or more than top edge of scene, and is player between LH and RH edges of scene?
             else if (playerTopEdge >= sceneTopEdge && playerRHEdge < sceneRHEdge && playerLHEdge > sceneLHEdge)
             {
@@ -66,8 +74,18 @@ public class SceneBounds : MonoBehaviour
 
     }
 
-    private bool IsPlayerLeavingRHEdgeOfScene(Bounds playerBounds)
+    private void MoveCameraRight()
     {
+        camPosition = gameObject.transform.position;
+        camPosition.x = camPosition.x + 10;
+        gameObject.transform.position = camPosition;
+    }
+
+    public bool IsPlayerIntersectingRHEdgeOfScene(Bounds playerBounds)
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+
+        Debug.Log("Running RHBounds method. playerBounds is: " + playerBounds.max.x + ", and boxCollider.bounds.max.x is: " + boxCollider.bounds.max.x);
         if (playerBounds.max.x >= boxCollider.bounds.max.x) {
             return true;
         }

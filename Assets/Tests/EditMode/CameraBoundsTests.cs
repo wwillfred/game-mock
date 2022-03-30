@@ -9,12 +9,17 @@ public class CameraBoundsTests
 
     // A Test behaves as an ordinary method
     [Test]
-    public void CheckForPlayerIntersectingRHEdgeOfCamera_BoundsIntersects_True()
+    public void CheckForPlayerIntersectingCameraMaxX_PlayerMaxXEqualsCameraMaxX_True()
     {
         Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
-        Bounds playerBounds = new Bounds(new Vector3(9, 0, 0), new Vector3(5, 4, 0));
 
-        Assert.IsTrue(Utility.CheckForPlayerIntersectingRHEdgeOfCamera(cameraBounds, playerBounds));
+        Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
+
+        float playerCenter_X = cameraBounds.max.x - playerSize.x/2; //position player's max x to equal camera's max x
+
+        Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
+
+        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
         // Use the Assert class to test conditions
     }
 

@@ -31,7 +31,7 @@ public class CameraBounds : MonoBehaviour
 
             Debug.Log("Player is triggering scene bounds. Player edges are: " + playerRHEdge + ", " + playerBottomEdge + ", " + playerLHEdge + ", " + playerTopEdge + ". Scene edges are: " + sceneRHEdge + ", " + sceneBottomEdge + ", " + sceneLHEdge + ", " + sceneTopEdge);
 
-            if (Utility.CheckForPlayerIntersectingRHEdgeOfScene(bounds, playerBounds)) MoveCameraRight();
+            if (Utility.CheckForPlayerIntersectingRHEdgeOfCamera(bounds, playerBounds)) MoveCameraRight();
 
             //is top edge of player equal to or more than top edge of scene, and is player between LH and RH edges of scene?
             else if (playerTopEdge >= sceneTopEdge && playerRHEdge < sceneRHEdge && playerLHEdge > sceneLHEdge)

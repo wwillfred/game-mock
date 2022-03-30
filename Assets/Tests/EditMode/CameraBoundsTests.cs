@@ -7,9 +7,8 @@ using UnityEngine.TestTools;
 public class CameraBoundsTests
 {
 
-    // A Test behaves as an ordinary method
     [Test]
-    public void CheckForPlayerIntersectingCameraMaxX_PlayerMaxXEqualsCameraMaxX_True()
+    public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXEqualsCameraMaxX_True()
     {
         Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
 
@@ -20,6 +19,21 @@ public class CameraBoundsTests
         Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
 
         Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
+        // Use the Assert class to test conditions
+    }
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXLessThanCameraMaxX_False()
+    {
+        Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
+
+        Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
+
+        float playerCenter_X = (cameraBounds.max.x - playerSize.x / 2) - 0.000001f; //position player's max x to be slightly less than camera's
+
+        Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
+
+        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
         // Use the Assert class to test conditions
     }
 

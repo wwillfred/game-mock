@@ -6,15 +6,15 @@ using UnityEngine.TestTools;
 
 public class CameraBoundsTests
 {
-    float margin = 0.000001f;
+    Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
+
+    Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
+
+    float margin = 0.000001f; // arbitrarily small value for testing values less than/greater than other values
 
     [Test]
     public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXEqualsCameraMaxX_True()
     {
-        Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
-
-        Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
-
         float playerCenter_X = cameraBounds.max.x - playerSize.x/2; //position player's max x to equal camera's max x
 
         Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
@@ -26,10 +26,6 @@ public class CameraBoundsTests
     [Test]
     public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXGreaterThanCameraMaxX_True()
     {
-        Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
-
-        Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
-
         float playerCenter_X = (cameraBounds.max.x - playerSize.x / 2) + margin; //position player's max x to be slightly less than camera's
 
         Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
@@ -41,10 +37,6 @@ public class CameraBoundsTests
     [Test]
     public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXLessThanCameraMaxX_False()
     {
-        Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
-
-        Vector3 playerSize = new Vector3(0.5605184f, 0.4763622f, 0);
-
         float playerCenter_X = (cameraBounds.max.x - playerSize.x / 2) - margin; //position player's max x to be slightly less than camera's
 
         Bounds playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);

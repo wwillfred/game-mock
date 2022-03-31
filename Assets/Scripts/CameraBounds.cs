@@ -44,8 +44,9 @@ public class CameraBounds : MonoBehaviour
             else if (playerLHEdge <= sceneLHEdge && playerTopEdge < sceneTopEdge && playerBottomEdge > sceneBottomEdge)
             {
                 Debug.Log("Player is leaving LH edge of scene. Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
-                camPosition.x = camPosition.x - 10;
-                gameObject.transform.position = camPosition;
+                MoveCameraLeft();
+                //camPosition.x = camPosition.x - 10;
+                //gameObject.transform.position = camPosition;
             }
             else if (playerBottomEdge <= sceneBottomEdge && playerLHEdge > sceneLHEdge && playerRHEdge < sceneRHEdge)
             {
@@ -60,19 +61,14 @@ public class CameraBounds : MonoBehaviour
 
     private void MoveCameraRight()
     {
-        camPosition = gameObject.transform.position;
         camPosition.x = camPosition.x + 10;
         gameObject.transform.position = camPosition;
     }
 
-    public bool IsPlayerIntersectingRHEdgeOfScene(Bounds playerBounds)
+    private void MoveCameraLeft()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-
-        Debug.Log("Running RHBounds method. playerBounds is: " + playerBounds.max.x + ", and boxCollider.bounds.max.x is: " + boxCollider.bounds.max.x);
-        if (playerBounds.max.x >= boxCollider.bounds.max.x) {
-            return true;
-        }
-        return false;
+        camPosition = gameObject.transform.position;
+        camPosition.x = camPosition.x - 10;
+        gameObject.transform.position = camPosition;
     }
 }

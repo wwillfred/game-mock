@@ -89,11 +89,31 @@ public class CameraBoundsTests
     [Test]
     public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYEqualsCameraMaxY_True()
     {
-        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y + playerBounds.extents.y, 0); //position player's max y to equal camera's max y
+        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y, 0); //position player's max y to equal camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
         Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
+    }
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYGreaterThanCameraMaxY_True()
+    {
+        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y + margin, 0); //position player's max y to be greater than camera's max y
+
+        SetPlayerBoundsCenter(playerCenter);
+
+        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
+    }
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYLessThanCameraMaxY_False()
+    {
+        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y - margin, 0); //position player's max y to be less than camera's max y
+
+        SetPlayerBoundsCenter(playerCenter);
+
+        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
     }
 
     private void SetPlayerBoundsCenter(Vector3 playerCenter)

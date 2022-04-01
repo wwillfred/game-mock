@@ -72,6 +72,16 @@ public class CameraBoundsTests
         Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_X(cameraBounds, playerBounds));
     }
 
+    [Test]
+    public void CheckPlayerIntersectingCameraMinX_PlayerMinXGreaterThanCameraMinX_False()
+    {
+        playerCenter_X = (cameraBounds.min.x + playerSize.x / 2) + margin; //position player's max x to be slightly greater than camera's
+
+        playerBounds = new Bounds(new Vector3(playerCenter_X, 0, 0), playerSize);
+
+        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMin_X(cameraBounds, playerBounds));
+    }
+
     /*
     [Test]
     public void CameraBoundsTestsSimplePasses()

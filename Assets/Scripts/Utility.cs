@@ -21,4 +21,10 @@ public static class Utility
         Debug.Log("Running static Max_Y intersection check. playerBoundsMaxY is: " + playerBounds.max.y + ", and cameraBoundsMaxY is: " + cameraBounds.max.y);
         return (playerBounds.max.y >= cameraBounds.max.y);
     }
+
+    public static bool CheckPlayerIntersectingCameraMin_Y(Bounds cameraBounds, Bounds playerBounds)
+    {
+        Debug.Log("Running static Min_Y intersection check. playerBoundsMinY is: " + playerBounds.min.y + ", and cameraBoundsMinY is: " + cameraBounds.min.y);
+        return (playerBounds.min.y <= cameraBounds.min.y);
+    }
 }

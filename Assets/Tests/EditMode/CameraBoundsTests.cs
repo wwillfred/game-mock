@@ -10,8 +10,6 @@ public class CameraBoundsTests
 
     Bounds playerBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(0.5605184f, 0.4763622f, 0));
 
-    //Vector3 playerCenter;
-
     readonly float margin = 0.000001f; // an arbitrarily small value for testing values less than/greater than other values
 
     /******************************** 
@@ -116,10 +114,49 @@ public class CameraBoundsTests
         Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
     }
 
+    /********************************
+    * Tests for Utility.CheckPlayerIntersectingCameraMin_Y()
+    *********************************/
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMinY_PlayerMinYEqualsCameraMinY_True()
+    {
+        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y, 0); //position player's min y to equal camera's min y
+
+        SetPlayerBoundsCenter(playerCenter);
+
+        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+    }
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMinY_PlayerMinYLessThanCameraMinY_True()
+    {
+        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y - margin, 0); //position player's min y to be less than camera's min y
+
+        SetPlayerBoundsCenter(playerCenter);
+
+        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+    }
+
+    [Test]
+    public void CheckPlayerIntersectingCameraMinY_PlayerMinYGreaterThanCameraMinY_False()
+    {
+        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y + margin, 0); //position player's min y to be greater than camera's min y
+
+        SetPlayerBoundsCenter(playerCenter);
+
+        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+    }
+
+
+    /********************************
+    * Helper method
+    *********************************/
     private void SetPlayerBoundsCenter(Vector3 playerCenter)
     {
         playerBounds.center = playerCenter;
     }
+
 
     /*
     [Test]

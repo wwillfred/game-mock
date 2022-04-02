@@ -13,139 +13,139 @@ public class CameraBoundsTests
     readonly float margin = 0.000001f; // an arbitrarily small value for testing values less than/greater than other values
 
     /******************************** 
-     * Tests for Utility.CheckPlayerIntersectingCameraMax_X()
+     * Tests for Utility.HasPlayerReachedRightEdgeOfCamera()
      ********************************/
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXEqualsCameraMaxX_True()
+    public void HasPlayerReachedRightEdgeOfCamera_PlayerMaxXEqualsCameraMaxX_True()
     {
         Vector3 playerCenter = new Vector3(cameraBounds.max.x - playerBounds.extents.x, 0, 0); //position player's max x to equal camera's max x
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedRightEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXGreaterThanCameraMaxX_True()
+    public void HasPlayerReachedRightEdgeOfCamera_PlayerMaxXGreaterThanCameraMaxX_True()
     {
         Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) + margin, 0, 0); //position player's max x to be slightly greater than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedRightEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxX_PlayerMaxXLessThanCameraMaxX_False()
+    public void HasPlayerReachedRightEdgeOfCamera_PlayerMaxXLessThanCameraMaxX_False()
     {
         Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) - margin, 0, 0); //position player's max x to be slightly less than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMax_X(cameraBounds, playerBounds));
+        Assert.IsFalse(Utility.HasPlayerReachedRightEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     /********************************
-    * Tests for Utility.CheckPlayerIntersectingCameraMin_X()
+    * Tests for Utility.HasPlayerReachedLeftEdgeOfCamera()
     *********************************/
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinX_PlayerMinXEqualsCameraMinX_True()
+    public void HasPlayerReachedLeftEdgeOfCamera_PlayerMinXEqualsCameraMinX_True()
     {
         Vector3 playerCenter = new Vector3(cameraBounds.min.x + playerBounds.extents.x, 0, 0); //position player's min x to equal camera's min x
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_X(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedLeftEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinX_PlayerMinXLessThanCameraMinX_True()
+    public void HasPlayerReachedLeftEdgeOfCamera_PlayerMinXLessThanCameraMinX_True()
     {
         Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) - margin, 0, 0); //position player's min x to be slightly less than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_X(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedLeftEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinX_PlayerMinXGreaterThanCameraMinX_False()
+    public void HasPlayerReachedLeftEdgeOfCamera_PlayerMinXGreaterThanCameraMinX_False()
     {
         Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) + margin, 0, 0); //position player's min x to be slightly greater than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMin_X(cameraBounds, playerBounds));
+        Assert.IsFalse(Utility.HasPlayerReachedLeftEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     /********************************
-   * Tests for Utility.CheckPlayerIntersectingCameraMax_Y()
+   * Tests for Utility.HasPlayerReachedTopEdgeOfCamera()
    *********************************/
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYEqualsCameraMaxY_True()
+    public void HasPlayerReachedTopEdgeOfCamera_PlayerMaxYEqualsCameraMaxY_True()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y, 0); //position player's max y to equal camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedTopEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYGreaterThanCameraMaxY_True()
+    public void HasPlayerReachedTopEdgeOfCamera_PlayerMaxYGreaterThanCameraMaxY_True()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y + margin, 0); //position player's max y to be greater than camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedTopEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMaxY_PlayerMaxYLessThanCameraMaxY_False()
+    public void HasPlayerReachedTopEdgeOfCamera_PlayerMaxYLessThanCameraMaxY_False()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y - margin, 0); //position player's max y to be less than camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMax_Y(cameraBounds, playerBounds));
+        Assert.IsFalse(Utility.HasPlayerReachedTopEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     /********************************
-    * Tests for Utility.CheckPlayerIntersectingCameraMin_Y()
+    * Tests for Utility.HasPlayerReachedBottomEdgeOfCamera()
     *********************************/
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinY_PlayerMinYEqualsCameraMinY_True()
+    public void HasPlayerReachedBottomEdgeOfCamera_PlayerMinYEqualsCameraMinY_True()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y, 0); //position player's min y to equal camera's min y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedBottomEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinY_PlayerMinYLessThanCameraMinY_True()
+    public void HasPlayerReachedBottomEdgeOfCamera_PlayerMinYLessThanCameraMinY_True()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y - margin, 0); //position player's min y to be less than camera's min y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsTrue(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+        Assert.IsTrue(Utility.HasPlayerReachedBottomEdgeOfCamera(cameraBounds, playerBounds));
     }
 
     [Test]
-    public void CheckPlayerIntersectingCameraMinY_PlayerMinYGreaterThanCameraMinY_False()
+    public void HasPlayerReachedBottomEdgeOfCamera_PlayerMinYGreaterThanCameraMinY_False()
     {
         Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y + margin, 0); //position player's min y to be greater than camera's min y
 
         SetPlayerBoundsCenter(playerCenter);
 
-        Assert.IsFalse(Utility.CheckPlayerIntersectingCameraMin_Y(cameraBounds, playerBounds));
+        Assert.IsFalse(Utility.HasPlayerReachedBottomEdgeOfCamera(cameraBounds, playerBounds));
     }
 
 

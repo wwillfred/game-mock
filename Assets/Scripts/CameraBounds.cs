@@ -31,24 +31,24 @@ public class CameraBounds : MonoBehaviour
 
             Debug.Log("Player is triggering scene bounds. Player edges are: " + playerRHEdge + ", " + playerBottomEdge + ", " + playerLHEdge + ", " + playerTopEdge + ". Scene edges are: " + sceneRHEdge + ", " + sceneBottomEdge + ", " + sceneLHEdge + ", " + sceneTopEdge);
 
-            if (Utility.CheckPlayerIntersectingCameraMax_X(bounds, playerBounds)) MoveCameraRight();
+            if (Utility.HasPlayerReachedRightEdgeOfCamera(bounds, playerBounds)) MoveCameraRight();
 
             //is top edge of player equal to or more than top edge of scene, and is player between LH and RH edges of scene?
-            else if (playerTopEdge >= sceneTopEdge && playerRHEdge < sceneRHEdge && playerLHEdge > sceneLHEdge)
+            else if (Utility.HasPlayerReachedTopEdgeOfCamera(bounds, playerBounds))
             {
                 Debug.Log("Player is leaving top edge of scene. Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge);
                 camPosition.y = camPosition.y + 9;
                 gameObject.transform.position = camPosition;
             }
             //is LH edge of player equal to or less than LH edge of scene, and is player between top and bottom edges of scene?
-            else if (playerLHEdge <= sceneLHEdge && playerTopEdge < sceneTopEdge && playerBottomEdge > sceneBottomEdge)
+            else if (Utility.HasPlayerReachedLeftEdgeOfCamera(bounds, playerBounds))
             {
                 Debug.Log("Player is leaving LH edge of scene. Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
                 MoveCameraLeft();
                 //camPosition.x = camPosition.x - 10;
                 //gameObject.transform.position = camPosition;
             }
-            else if (playerBottomEdge <= sceneBottomEdge && playerLHEdge > sceneLHEdge && playerRHEdge < sceneRHEdge)
+            else if (Utility.HasPlayerReachedBottomEdgeOfCamera(bounds, playerBounds))
             {
                 Debug.Log("Player is leaving bottom edge of scene. Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge + ". Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge);
                 camPosition.y = camPosition.y - 9;

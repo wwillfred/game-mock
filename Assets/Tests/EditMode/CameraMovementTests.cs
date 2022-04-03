@@ -50,4 +50,19 @@ public class CameraMovementTests
 
         Assert.AreEqual(new Vector3(initialCamPosition.x, initialCamPosition.y + 9, initialCamPosition.z), cameraController.transform.position);
     }
+
+    [Test]
+    public void MoveCameraDown_NoInput_True()
+    {
+        var gameObject = new GameObject();
+        var cameraController = gameObject.AddComponent<CameraController>();
+
+        Vector3 initialCamPosition = cameraController.transform.position;
+        Debug.Log("initial cam pos is: " + initialCamPosition.ToString());
+
+        cameraController.MoveCameraDown();
+        Debug.Log("after moving down, cam pos is: " + cameraController.transform.position.ToString());
+
+        Assert.AreEqual(new Vector3(initialCamPosition.x, initialCamPosition.y - 9, initialCamPosition.z), cameraController.transform.position);
+    }
 }

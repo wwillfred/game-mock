@@ -73,4 +73,11 @@ public class CameraController : MonoBehaviour
         camPosition.y = camPosition.y + 9;
         gameObject.transform.position = camPosition;
     }
+
+    public void MoveCameraDown()
+    {
+        camPosition = gameObject.transform.position;
+        camPosition.y = camPosition.y - 9;
+        gameObject.transform.position = camPosition;
+    }
 }

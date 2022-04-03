@@ -6,9 +6,9 @@ using UnityEngine.TestTools;
 
 public class CameraControllerTests
 {
-    Bounds cameraBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(10, 9, 0));
+    Bounds cameraBounds = new Bounds(Vector3.zero, new Vector3(10, 9, 0));
 
-    Bounds playerBounds = new Bounds(new Vector3(0, 0, 0), new Vector3(0.5605184f, 0.4763622f, 0));
+    Bounds playerBounds = new Bounds(Vector3.zero, new Vector3(0.5605184f, 0.4763622f, 0));
 
     readonly float margin = 0.000001f; // an arbitrarily small value for testing values less than/greater than other values
 

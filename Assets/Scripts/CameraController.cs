@@ -60,13 +60,13 @@ public class CameraController : MonoBehaviour
 
     }
 
-    private void MoveCameraRight()
+    public void MoveCameraRight()
     {
         camPosition.x = camPosition.x + 10;
         gameObject.transform.position = camPosition;
     }
 
-    private void MoveCameraLeft()
+    public void MoveCameraLeft()
     {
         camPosition = gameObject.transform.position;
         camPosition.x = camPosition.x - 10;

@@ -41,14 +41,8 @@ public class CameraController : MonoBehaviour
                 camPosition.y = camPosition.y + 9;
                 gameObject.transform.position = camPosition;
             }
-            //is LH edge of player equal to or less than LH edge of scene, and is player between top and bottom edges of scene?
-            else if (Utility.HasPlayerReachedLeftEdgeOfCamera(cameraBounds, playerBounds))
-            {
-                //Debug.Log("Player is leaving LH edge of scene. Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player top edge: " + playerTopEdge + ", scene top edge: " + sceneTopEdge + ". Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge);
-                MoveCameraLeft();
-                //camPosition.x = camPosition.x - 10;
-                //gameObject.transform.position = camPosition;
-            }
+            else if (Utility.HasPlayerReachedLeftEdgeOfCamera(cameraBounds, playerBounds)) MoveCameraLeft();
+           
             else if (Utility.HasPlayerReachedBottomEdgeOfCamera(cameraBounds, playerBounds))
             {
                 //Debug.Log("Player is leaving bottom edge of scene. Player bottom edge: " + playerBottomEdge + ", scene bottom edge: " + sceneBottomEdge + ". Player LH edge: " + playerLHEdge + ", scene LH edge: " + sceneLHEdge + ". Player RH edge: " + playerRHEdge + ", scene RH edge: " + sceneRHEdge);
@@ -70,6 +64,13 @@ public class CameraController : MonoBehaviour
     {
         camPosition = gameObject.transform.position;
         camPosition.x = camPosition.x - 10;
+        gameObject.transform.position = camPosition;
+    }
+
+    public void MoveCameraUp()
+    {
+        camPosition = gameObject.transform.position;
+        camPosition.y = camPosition.y + 9;
         gameObject.transform.position = camPosition;
     }
 }

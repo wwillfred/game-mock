@@ -4,7 +4,7 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-public class CameraControllerTests
+public class CameraEdgeInteractionTests
 {
     Bounds cameraBounds = new Bounds(Vector3.zero, new Vector3(10, 9, 0));
 

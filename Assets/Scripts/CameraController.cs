@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         camPosition = gameObject.transform.position;
+
         Bounds cameraBounds = boxCollider.bounds;
         Bounds playerBounds = other.GetComponent<BoxCollider2D>().bounds;
 

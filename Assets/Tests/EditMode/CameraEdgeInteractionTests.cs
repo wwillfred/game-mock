@@ -10,7 +10,7 @@ public class CameraEdgeInteractionTests
 
     Bounds playerBounds = new Bounds(Vector3.zero, new Vector3(0.5605184f, 0.4763622f, 0));
 
-    readonly float margin = 0.000001f; // an arbitrarily small value for testing values less than/greater than other values
+    readonly float delta = 0.000001f; // an arbitrarily small value for testing values less than/greater than other values
 
     /******************************** 
      * Tests for Utility.HasPlayerReachedRightEdgeOfCamera()
@@ -29,7 +29,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedRightEdgeOfCamera_PlayerMaxXGreaterThanCameraMaxX_True()
     {
-        Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) + margin, 0, 0); //position player's max x to be slightly greater than camera's
+        Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) + delta, 0, 0); //position player's max x to be slightly greater than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -39,7 +39,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedRightEdgeOfCamera_PlayerMaxXLessThanCameraMaxX_False()
     {
-        Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) - margin, 0, 0); //position player's max x to be slightly less than camera's
+        Vector3 playerCenter = new Vector3((cameraBounds.max.x - playerBounds.extents.x) - delta, 0, 0); //position player's max x to be slightly less than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -63,7 +63,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedLeftEdgeOfCamera_PlayerMinXLessThanCameraMinX_True()
     {
-        Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) - margin, 0, 0); //position player's min x to be slightly less than camera's
+        Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) - delta, 0, 0); //position player's min x to be slightly less than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -73,7 +73,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedLeftEdgeOfCamera_PlayerMinXGreaterThanCameraMinX_False()
     {
-        Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) + margin, 0, 0); //position player's min x to be slightly greater than camera's
+        Vector3 playerCenter = new Vector3((cameraBounds.min.x + playerBounds.extents.x) + delta, 0, 0); //position player's min x to be slightly greater than camera's
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -97,7 +97,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedTopEdgeOfCamera_PlayerMaxYGreaterThanCameraMaxY_True()
     {
-        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y + margin, 0); //position player's max y to be greater than camera's max y
+        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y + delta, 0); //position player's max y to be greater than camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -107,7 +107,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedTopEdgeOfCamera_PlayerMaxYLessThanCameraMaxY_False()
     {
-        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y - margin, 0); //position player's max y to be less than camera's max y
+        Vector3 playerCenter = new Vector3(0, cameraBounds.max.y - playerBounds.extents.y - delta, 0); //position player's max y to be less than camera's max y
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -131,7 +131,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedBottomEdgeOfCamera_PlayerMinYLessThanCameraMinY_True()
     {
-        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y - margin, 0); //position player's min y to be less than camera's min y
+        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y - delta, 0); //position player's min y to be less than camera's min y
 
         SetPlayerBoundsCenter(playerCenter);
 
@@ -141,7 +141,7 @@ public class CameraEdgeInteractionTests
     [Test]
     public void HasPlayerReachedBottomEdgeOfCamera_PlayerMinYGreaterThanCameraMinY_False()
     {
-        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y + margin, 0); //position player's min y to be greater than camera's min y
+        Vector3 playerCenter = new Vector3(0, cameraBounds.min.y + playerBounds.extents.y + delta, 0); //position player's min y to be greater than camera's min y
 
         SetPlayerBoundsCenter(playerCenter);
 

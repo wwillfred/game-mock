@@ -20028,6 +20028,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8796732202392079082, guid: dab50f933e7d34013bf027961e78de35, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8796732202392079083, guid: dab50f933e7d34013bf027961e78de35, type: 3}
       propertyPath: dialogUI
       value: 
@@ -20089,6 +20093,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8852721308497655588, guid: f7053c902589845649b0b64b2f2eeecb, type: 3}
+      propertyPath: m_UpscaleRT
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8852721308497655590, guid: f7053c902589845649b0b64b2f2eeecb, type: 3}
       propertyPath: m_Name
       value: Main Camera

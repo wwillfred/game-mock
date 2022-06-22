@@ -72,6 +72,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -484,6 +485,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GameBoy Tile_Water_7: 5662764203736555393
+      GameBoy Tile_Water_14: 7281242904636556178
+      GameBoy Tile_Water_13: -3498571056690399891
+      GameBoy Tile_Water_2: 4493467665759694976
+      GameBoy Tile_Water_12: 609961186689270357
+      GameBoy Tile_Water_5: 4224561177856361790
+      GameBoy Tile_Water_0: 2244668321380779824
+      GameBoy Tile_Water_9: -3379641334646501686
+      GameBoy Tile_Water_3: -4305076289619633212
+      GameBoy Tile_Water_10: 8085534199266597012
+      GameBoy Tile_Water_11: 2820097010195393942
+      GameBoy Tile_Water_15: -4366189630343115693
+      GameBoy Tile_Water_8: -3394083313185398674
+      GameBoy Tile_Water_1: -8600382692516559687
+      GameBoy Tile_Water_4: 3968342588412454582
+      GameBoy Tile_Water_6: -4178223783508481462
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

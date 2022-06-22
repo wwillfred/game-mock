@@ -36,6 +36,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -196,6 +197,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      GB Battleground 1 Orig_1: 8593191391250917715
+      GB Battleground 1 Orig_3: 1186931757224431099
+      GB Battleground 1 Orig_2: 6590447838024320800
+      GB Battleground 1 Orig_0: 1722121699983256350
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

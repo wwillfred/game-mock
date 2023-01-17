@@ -1,4 +1,6 @@
 # Game mock 
+Play a build of this project [here](https://wwillfred.itch.io/game-mock).
+
 This is a mechanics mockup for my first computer game. I built this mockup in Unity but have taken a break from game development in 2023 and may begin this project again in C someday. The original design for the game is a top-down 2D game.
 
 ### Mockup
